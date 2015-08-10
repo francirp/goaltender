@@ -1,3 +1,12 @@
+require 'goaltender/value_parser/belongs_to'
+require 'goaltender/value_parser/boolean'
+require 'goaltender/value_parser/date'
+require 'goaltender/value_parser/datetime'
+require 'goaltender/value_parser/float'
+require 'goaltender/value_parser/has_many'
+require 'goaltender/value_parser/integer'
+require 'goaltender/value_parser/string'
+
 module Goaltender
   class ValueParser
 

@@ -12,11 +12,11 @@ module Goaltender
       @parse_format = options[:parse_format]
       @form_path = options[:form_path]
       @form_class = generate_form_class
-      @variable_name = @name
+      @variable_name = options[:variable_name] || @name
     end
 
     def value_parser
-      @value_parser ||= "Goaltender::ValueParser::#{type.to_s.classify}".constantize.new({
+      @value_parser ||= "FormParse::ValueParser::#{type.to_s.classify}".constantize.new({
         input_value: input_value,
         parse_format: parse_format,
         form_class: form_class,
