@@ -16,7 +16,7 @@ module Goaltender
     end
 
     def value_parser
-      @value_parser ||= "FormParse::ValueParser::#{type.to_s.classify}".constantize.new({
+      @value_parser ||= "Goaltender::ValueParser::#{type.to_s.classify}".constantize.new({
         input_value: input_value,
         parse_format: parse_format,
         form_class: form_class,

@@ -1,6 +1,13 @@
 class Goaltender::Base
 
-  include ActiveModel::Model
+  if Rails.version[0].to_i < 4
+    include ActiveModel::Validations
+    include ActiveModel::Conversion
+    extend ActiveModel::Naming
+  else
+    include ActiveModel::Model
+  end
+
   include Goaltender::BaseModule
 
   attr_reader :params, :inputs
