@@ -1,3 +1,52 @@
+Goaltender
+===
+
+Installation
+---
+
+1. Add Gem:
+
+```ruby
+gem "goaltender"
+```
+
+```
+bundle
+```
+
+2. Create a class to process your form and have it inherit from Goaltender::Base. In a new folder app/classes/forms, create your file like so:
+
+```ruby
+class Forms::Property < Goaltender::Base
+
+  input :bedrooms, :integer
+  input :price, :float
+  input :has_air_conditioning, :boolean
+  input :has_parking, :boolean
+  input :has_laundry, :boolean
+
+end
+```
+
+3. In your controller:
+
+```ruby
+  def create
+    @form = Forms::Property.new(params)
+
+    if @form.save
+      redirect_to trips_path
+    else
+      set_index_variables
+      render "index"
+    end
+  end
+```
+
+
+Why a Library for Parsing Forms?
+---
+
 In my humble opinion, Rails is missing a tool for parsing forms on the backend. Currently the process looks something like this:
 
 ```html
