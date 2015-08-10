@@ -4,7 +4,7 @@ Goaltender
 Installation
 ---
 
-1. Add Gem:
+Add Gem:
 
 ```ruby
 gem "goaltender"
@@ -14,7 +14,7 @@ gem "goaltender"
 bundle
 ```
 
-2. Create a class to process your form and have it inherit from Goaltender::Base. In a new folder app/classes/forms, create your file like so:
+Create a class to process your form and have it inherit from Goaltender::Base. In a new folder app/classes/forms, create your file like so:
 
 ```ruby
 class Forms::Property < Goaltender::Base
@@ -28,7 +28,7 @@ class Forms::Property < Goaltender::Base
 end
 ```
 
-3. In your controller:
+In your controller:
 
 ```ruby
   def create
