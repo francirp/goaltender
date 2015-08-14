@@ -11,7 +11,7 @@ module Goaltender
       def parse
         return input_value unless input_value.present?
         return input_value if input_value.is_a?(Date)
-        Date.strptime(input_value, input_format)
+        ::Date.strptime(input_value, input_format)
       end
 
     end
