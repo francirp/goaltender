@@ -1,6 +1,6 @@
 module Goaltender
   class ValueParser
-    class Datetime < ValueParser
+    class Date < ValueParser
 
       attr_reader :input_format
 
