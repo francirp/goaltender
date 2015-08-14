@@ -14,7 +14,13 @@ gem "goaltender"
 bundle
 ```
 
-Create a class to process your form and have it inherit from Goaltender::Base. In a new folder app/classes/forms, create your file like so:
+
+Basic Usage
+---
+
+Create a class to process your form and have it inherit from Goaltender::Base. I typically create the following folder to hold my form classes: app/classes/forms
+
+**app/classes/forms/property.rb**
 
 ```ruby
 class Forms::Property < Goaltender::Base
@@ -42,6 +48,57 @@ In your controller:
     end
   end
 ```
+
+Inheritance
+---
+
+General pattern:
+
+- forms/property.rb
+- forms/property/create.rb (inherits from forms/property.rb)
+- forms/property/update.rb (inherits from forms/property.rb)
+
+
+```ruby
+# app/classes/forms/property.rb
+class Forms::Property < Goaltender::Base
+
+  input :bedrooms, :integer
+  input :price, :float
+  input :referred_by, :string
+
+end
+
+
+# app/classes/forms/property/create.rb
+class Forms::Property::Create < Forms::Property
+
+  # override any input, validation, or method here
+
+end
+```
+
+class Forms::Property::Update < Forms::Property
+
+  # override any input, validation, or method here
+
+end
+```
+
+Associations
+---
+
+Let's say we are creating a web app where teacher's can create Courses with assignments and resources attached to the courses.
+
+The modeling would look like:
+
+class Course < ActiveRecord::Base
+
+  has_many :assignments
+  has_many :resources
+
+end
+
 
 
 Why a Library for Parsing Forms?
