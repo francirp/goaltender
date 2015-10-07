@@ -6,6 +6,7 @@ require 'goaltender/value_parser/float'
 require 'goaltender/value_parser/has_many'
 require 'goaltender/value_parser/integer'
 require 'goaltender/value_parser/string'
+require 'goaltender/value_parser/nil_class'
 
 module Goaltender
   class ValueParser
