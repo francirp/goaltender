@@ -7,6 +7,7 @@ require 'goaltender/value_parser/has_many'
 require 'goaltender/value_parser/integer'
 require 'goaltender/value_parser/string'
 require 'goaltender/value_parser/nil_class'
+require 'goaltender/value_parser/attachment'
 
 module Goaltender
   class ValueParser
