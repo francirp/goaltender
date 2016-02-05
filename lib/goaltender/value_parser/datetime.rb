@@ -1,7 +1,6 @@
 module Goaltender
   class ValueParser
     class DateTime < ValueParser
-
       attr_reader :input_format
 
       def after_init(args)
@@ -13,7 +12,6 @@ module Goaltender
         return input_value if input_value.is_a?(DateTime)
         ::Date.strptime(input_value, input_format)
       end
-
     end
   end
 end

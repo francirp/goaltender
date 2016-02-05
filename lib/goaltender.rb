@@ -2,8 +2,7 @@ module Goaltender
 
 end
 
-require "goaltender/version"
-require "goaltender/base_module"
+require 'goaltender/version'
 require 'goaltender/value_parser'
 require 'goaltender/input'
-require 'goaltender/base'
+require 'goaltender/transformer'

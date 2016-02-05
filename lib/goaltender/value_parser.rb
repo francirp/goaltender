@@ -1,13 +1,16 @@
+require 'goaltender/value_parser/attachment'
 require 'goaltender/value_parser/belongs_to'
 require 'goaltender/value_parser/boolean'
 require 'goaltender/value_parser/date'
 require 'goaltender/value_parser/datetime'
 require 'goaltender/value_parser/float'
 require 'goaltender/value_parser/has_many'
+require 'goaltender/value_parser/has_one'
 require 'goaltender/value_parser/integer'
-require 'goaltender/value_parser/string'
 require 'goaltender/value_parser/nil_class'
-require 'goaltender/value_parser/attachment'
+require 'goaltender/value_parser/phone'
+require 'goaltender/value_parser/string'
+require 'goaltender/value_parser/zip'
 
 module Goaltender
   class ValueParser

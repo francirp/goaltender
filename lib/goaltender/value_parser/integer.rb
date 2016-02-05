@@ -1,7 +1,6 @@
 module Goaltender
   class ValueParser
     class Integer < ValueParser
-
       REGEX = /(\d|[.])/
 
       def parse
@@ -10,7 +9,6 @@ module Goaltender
         return input_value.to_i if input_value.is_a?(Float)
         input_value.scan(REGEX).join.try(:to_i)
       end
-
     end
   end
 end
