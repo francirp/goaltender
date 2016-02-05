@@ -1,7 +1,7 @@
 module Goaltender
   class Input
 
-    attr_accessor :current_instance, :name, :type, :parse_format, :default, :form_class, :input_value, :variable_name
+    attr_accessor :current_instance, :name, :default, :input_value, :type, :variable_name, :options
 
     def initialize(current_instance, name, type, input_value, options = {})
       @current_instance = current_instance
@@ -9,18 +9,15 @@ module Goaltender
       @default = perform_default(options[:default])
       @input_value = input_value || @default
       @type = type || input_value.class
-      @parse_format = options[:parse_format]
-      @form_class = options[:form]
       @variable_name = options[:variable_name] || @name
+      @options = options
     end
 
     def value_parser
-      @value_parser ||= "Goaltender::ValueParser::#{type.to_s.classify}".constantize.new({
+      @value_parser ||= "Goaltender::ValueParser::#{type.to_s.classify}".constantize.new(options.merge({
         input_value: input_value,
-        parse_format: parse_format,
-        form_class: form_class,
         variable_name: variable_name
-      })
+      }))
     end
 
     def parsed_value

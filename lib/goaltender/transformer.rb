@@ -4,7 +4,7 @@ module Goaltender
     attr_accessor :inputs
 
     def initialize(args)
-      @params = HashWithIndifferentAccess.new(args)
+      @params = args.to_h.with_indifferent_access
       @inputs = set_inputs
       after_init(@params)
     end
@@ -36,7 +36,7 @@ module Goaltender
     private
 
       def set_inputs
-        setter = DirectoryParser.new(current_class_name: self.class.name)
+        setter = Goaltender::DirectoryParser.new(current_class_name: self.class.name)
         all_inputs = []
         Goaltender::Transformer.input_definitions.each do |class_name, form_inputs|
           next unless setter.relevant_classes.include?(class_name)
