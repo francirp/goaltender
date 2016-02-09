@@ -1,12 +1,7 @@
 module Goaltender
   class ValueParser
     class HasMany < ValueParser
-      attr_reader :form_class, :variable_name
-
-      def after_init(args)
-        @form_class = args[:form_class]
-        @variable_name = args[:variable_name]
-      end
+      include Goaltender::ValueParser::Relationship
 
       # should return a pattern like...
       # {
@@ -19,9 +14,23 @@ module Goaltender
       # }
       def parse
         return input_value unless input_value.present?
+        parse_hash if input_value.is_a?(Hash)
+        parse_array if input_value.is_a?(Array)
+      end
+
+      def parse_hash
         hash = {}
         input_value.each do |index, obj_hash|
-          object_hash = form_class.new(obj_hash).to_h
+          object_hash = transformer.new(obj_hash).transform
+          hash[index] = object_hash
+        end
+        hash
+      end
+
+      def parse_array
+        hash = {}
+        input_value.each_with_index do |obj_hash, index|
+          object_hash = transformer.new(obj_hash).transform
           hash[index] = object_hash
         end
         hash

@@ -1,3 +1,4 @@
+require 'goaltender/value_parser/relationship'
 require 'goaltender/value_parser/attachment'
 require 'goaltender/value_parser/belongs_to'
 require 'goaltender/value_parser/boolean'
