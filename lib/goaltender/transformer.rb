@@ -4,7 +4,7 @@ module Goaltender
     attr_accessor :inputs
 
     def initialize(args)
-      @params = args.to_h.with_indifferent_access
+      @params = Rails.version[0].to_i > 4 ? args.to_h.with_indifferent_access : HashWithIndifferentAccess.new(args)
       @inputs = set_inputs
       after_init(@params)
     end
