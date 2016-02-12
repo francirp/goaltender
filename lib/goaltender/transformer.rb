@@ -33,10 +33,6 @@ module Goaltender
       @@input_definitions
     end
 
-    def self.with_context(context, &:block)
-
-    end
-
     private
 
       def set_inputs
